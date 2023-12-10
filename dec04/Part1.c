@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]) {
     int r = 0;
     
     while((c = getchar()) != EOF) {
-
+        
         if(game_identifier) {
             if(c == ':') {
                 game_identifier = false;
