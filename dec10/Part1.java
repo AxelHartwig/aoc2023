@@ -1,9 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.Scanner;
 
-import javax.print.attribute.HashAttributeSet;
 
 public class Part1 {
 
@@ -91,7 +89,7 @@ public class Part1 {
                         }
                         break;
                     default:
-                        System.out.println("default, ej färväntat");
+                        System.out.println("default, ej förväntat");
                 }
                 boolMatrix[y1][x1] = true;
 
