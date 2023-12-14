@@ -1,0 +1,11 @@
+
+O..#O.O.#...O
+
+split #
+
+[O.., O.O., ...O]
+sortera varje element med O först
+
+[O.., OO.., O...]
+
+slå ihop allt och lägg til # mellan, load för varje är nu totala antalet rader-index
