@@ -21,41 +21,30 @@ public class Part1 {
 
     }
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner scan = new Scanner(new File("Input13.txt"));
+        Scanner scan = new Scanner(new File("input13.txt"));
         ArrayList<String> pattern = new ArrayList<>();
         ArrayList<String> transPattern = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         int sum = 0;
         boolean row = false;
         boolean col = false;
-        boolean flag = true;
         while(scan.hasNextLine()) {
             row = false;
             col = false;
             String line = scan.nextLine();
             if(line.isBlank()) {
                 //checks row
-                
                 for(int i = 0; i<pattern.size()-1; i++) {
-                    if(pattern.get(i).equals(pattern.get(i+1)) || equalsWithSmudge(pattern.get(i), pattern.get(i+1))) {
-                        if(!pattern.get(i).equals(pattern.get(i+1))) {
-                            flag = false;
-                        } else {
-                            flag = true;
-                        }
+                    if(pattern.get(i).equals(pattern.get(i+1))) {
+
                         int j = i;
                         int k = i+1;
                         row = true;
                         while(j >= 0 && k < pattern.size()-1 && row) {
-                            row &= pattern.get(j).equals(pattern.get(k));
-                            if(!pattern.get(j).equals(pattern.get(k)) && flag) {
-                                if(equalsWithSmudge(pattern.get(j), pattern.get(k))) {
-                                    flag = false;
-                                }
-                            }                            
+                            row &= pattern.get(j).equals(pattern.get(k));                    
                             j--;
                             k++;
-                            }
+                        }
                         if(row){
                             sum += (i+1)*100;
                             break;
@@ -80,22 +69,12 @@ public class Part1 {
   
 
                     for(int i = 0; i<transPattern.size()-1; i++) {
-                        if(transPattern.get(i).equals(transPattern.get(i+1)) || equalsWithSmudge(transPattern.get(i), transPattern.get(i+1))) {
-                            if(!transPattern.get(i).equals(transPattern.get(i+1))) {
-                                flag = false;
-                            } else {
-                                flag = true;
-                            }
+                        if(transPattern.get(i).equals(transPattern.get(i+1))) {
                             int j = i;
                             int k = i+1;
                             col = true;
                             while(j >= 0 && k < transPattern.size()-1 && col) {
-                                col &= transPattern.get(j).equals(transPattern.get(k));
-                                if(!transPattern.get(j).equals(transPattern.get(k)) && flag) {
-                                    if(equalsWithSmudge(transPattern.get(j), transPattern.get(k))) {
-                                        flag = false;
-                                    }
-                                }                            
+                                col &= transPattern.get(j).equals(transPattern.get(k));                         
                                 j--;
                                 k++;
                             }
