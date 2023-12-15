@@ -18,7 +18,6 @@ public class Part1 {
             }
         }
         return true;
-
     }
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scan = new Scanner(new File("input13.txt"));
