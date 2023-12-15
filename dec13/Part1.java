@@ -28,23 +28,24 @@ public class Part1 {
         int sum = 0;
         boolean row = false;
         boolean col = false;
+
         while(scan.hasNextLine()) {
             row = false;
             col = false;
             String line = scan.nextLine();
             if(line.isBlank()) {
-                //checks row
+
                 for(int i = 0; i<pattern.size()-1; i++) {
                     if(pattern.get(i).equals(pattern.get(i+1))) {
-
                         int j = i;
                         int k = i+1;
                         row = true;
-                        while(j >= 0 && k < pattern.size()-1 && row) {
+                        while(j >= 0 && k < pattern.size() && row) {
                             row &= pattern.get(j).equals(pattern.get(k));                    
                             j--;
                             k++;
                         }
+
                         if(row){
                             sum += (i+1)*100;
                             break;
@@ -62,19 +63,17 @@ public class Part1 {
                         for(int j = 0; j<pattern.size(); j++) {
                             sb.append(pattern.get(j).charAt(i));
                         }
-                        System.out.println(sb.toString());
                         transPattern.add(sb.toString());
                     }
-                    System.out.println("");
-  
+            
 
                     for(int i = 0; i<transPattern.size()-1; i++) {
                         if(transPattern.get(i).equals(transPattern.get(i+1))) {
                             int j = i;
                             int k = i+1;
                             col = true;
-                            while(j >= 0 && k < transPattern.size()-1 && col) {
-                                col &= transPattern.get(j).equals(transPattern.get(k));                         
+                            while(j >= 0 && k < transPattern.size() && col) {
+                                col &= transPattern.get(j).equals(transPattern.get(k));
                                 j--;
                                 k++;
                             }
@@ -85,8 +84,8 @@ public class Part1 {
                             } else {
                                 continue;
                             }
+                        }
                     }
-                }
                 }
                 pattern.clear();
                 transPattern.clear();
