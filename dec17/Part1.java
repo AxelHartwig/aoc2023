@@ -24,12 +24,13 @@ class Part1 {
         int[] dx = new int[] { 1, -1, 0, 0 };
         int[] dy = new int[] { 0, 0, 1, -1 };
 
-        queue.add(new Node(0, 0, 0, 0, 0, 0));
+        queue.add(new Node(0, 0, 0, 1, 0, 0));
+        queue.add(new Node(0, 0, 0, 0, 1, 0));
 
         while (!queue.isEmpty()) {
             Node curr = queue.poll();
 
-            if (curr.x == matrix[0].length - 1 && curr.y == matrix.length - 1) {
+            if (curr.x == matrix[0].length - 1 && curr.y == matrix.length - 1 && curr.counter >= 4) {
                 System.out.println(curr.loss);
                 break;
             }
@@ -52,13 +53,13 @@ class Part1 {
                 }
 
                 if (dx[i] == curr.dx && dy[i] == curr.dy) {
-                    if (curr.counter < 3) {
+                    if (curr.counter < 10) {
                         queue.offer(new Node(nextX, nextY, curr.loss + matrix[nextY][nextX], dx[i], dy[i],
                                 curr.counter + 1));
                     } else {
                         continue;
                     }
-                } else {
+                } else if (curr.counter >= 4) {
                     queue.offer(new Node(nextX, nextY, curr.loss + matrix[nextY][nextX], dx[i], dy[i], 1));
                 }
             }

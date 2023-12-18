@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Node implements Comparable<Node> {
     int x;
@@ -34,13 +35,7 @@ public class Node implements Comparable<Node> {
 
     @Override
     public int hashCode() {
-        int ret = 7;
-        ret = 31 * x;
-        ret = 31 * y;
-        ret = 31 * counter;
-        ret = 31 * dx;
-        ret = 31 * dy;
-        return ret;
+        return Objects.hash(x, y, dx, dy, counter);
     }
 
 }
