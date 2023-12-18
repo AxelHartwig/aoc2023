@@ -37,8 +37,6 @@ class Part2 {
             edgepoints += distance;
         }
         area = Math.abs(area) / 2;
-        System.out.println(area);
-
         System.out.println(area + edgepoints / 2 + 1);
     }
 }
