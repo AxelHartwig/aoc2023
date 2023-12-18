@@ -11,6 +11,7 @@ class Part1 {
 
     final static int rows = 141;
     final static int cols = 141;
+    final static boolean part2 = false;
 
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scan = new Scanner(new File("input17.txt"));
@@ -24,13 +25,18 @@ class Part1 {
         int[] dx = new int[] { 1, -1, 0, 0 };
         int[] dy = new int[] { 0, 0, 1, -1 };
 
-        queue.add(new Node(0, 0, 0, 1, 0, 0));
-        queue.add(new Node(0, 0, 0, 0, 1, 0));
+        if (part2) {
+            queue.add(new Node(0, 0, 0, 1, 0, 0));
+            queue.add(new Node(0, 0, 0, 0, 1, 0));
+        } else {
+            queue.add(new Node(0, 0, 0, 0, 0, 0));
+
+        }
 
         while (!queue.isEmpty()) {
             Node curr = queue.poll();
 
-            if (curr.x == matrix[0].length - 1 && curr.y == matrix.length - 1 && curr.counter >= 4) {
+            if (curr.x == matrix[0].length - 1 && curr.y == matrix.length - 1 && (curr.counter >= 4 || !part2)) {
                 System.out.println(curr.loss);
                 break;
             }
@@ -53,13 +59,13 @@ class Part1 {
                 }
 
                 if (dx[i] == curr.dx && dy[i] == curr.dy) {
-                    if (curr.counter < 10) {
+                    if ((curr.counter < 10 || !part2) && (curr.counter < 3 || part2)) {
                         queue.offer(new Node(nextX, nextY, curr.loss + matrix[nextY][nextX], dx[i], dy[i],
                                 curr.counter + 1));
                     } else {
                         continue;
                     }
-                } else if (curr.counter >= 4) {
+                } else if (curr.counter >= 4 || !part2) {
                     queue.offer(new Node(nextX, nextY, curr.loss + matrix[nextY][nextX], dx[i], dy[i], 1));
                 }
             }
