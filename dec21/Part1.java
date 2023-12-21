@@ -23,9 +23,10 @@ class Part1 {
     }
 
     private static void part2() {
+        long t0 = System.currentTimeMillis();
         long part2;
-        long odd = countPlots(0, 0, 2 * 131 + 69);
-        long even = countPlots(0, 0, 2 * 131 + 42);
+        long odd = countPlots(0, 0, 2 * 131 + 1);
+        long even = countPlots(0, 0, 2 * 131);
         long n = countPlots(130, 65, 130);
         long e = countPlots(65, 0, 130);
         long s = countPlots(0, 65, 130);
@@ -43,7 +44,7 @@ class Part1 {
                 seEdgeSmall + swEdgeSmall + nwEdgeSmall) * (202300) + (neEdgeLarge + seEdgeLarge +
                         swEdgeLarge + nwEdgeLarge) * (202300 - 1);
 
-        System.out.println("part2 = " + part2);
+        System.out.println("part2 = " + part2 + ", time: " + (System.currentTimeMillis() - t0));
     }
 
     private static void part1() {
